@@ -18,7 +18,6 @@ export class CoinListComponent implements OnInit {
 
   ngOnInit() {
     this.coinService.getCoins().subscribe((data: ICoin[]) => {
-      debugger;
       this.coins = new MatTableDataSource<ICoin>(data);
       this.coins.paginator = this.paginator;
     });
