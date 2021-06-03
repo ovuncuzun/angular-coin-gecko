@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ICoinDetail, ICoins } from '../interfaces/coin.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +11,12 @@ export class CoinService {
 
   constructor(private http: HttpClient) { }
 
-  getCoins() {
+  getCoins(): Observable<ICoins[]> {
     let params = new HttpParams().set('vs_currency', 'eur');
-    return this.http.get(this.API_URL.concat('/coins/markets'), { params: params });
+    return this.http.get<ICoins[]>(this.API_URL.concat('/coins/markets'), { params: params });
   }
 
-  getCoinsById(id: string) {
-    return this.http.get(this.API_URL.concat('/coins/' + id));
+  getCoinsById(id: string): Observable<ICoinDetail> {
+    return this.http.get<ICoinDetail>(this.API_URL.concat('/coins/' + id));
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { ICoinDetail } from 'src/app/interfaces/coin.interface';
 import { CoinService } from 'src/app/services/coin.service';
 
 @Component({
@@ -9,14 +10,14 @@ import { CoinService } from 'src/app/services/coin.service';
   styleUrls: ['./coin-detail.component.scss']
 })
 export class CoinDetailComponent implements OnInit {
-  coinDetail$: Observable<any> | undefined;
+  coinDetail$: Observable<ICoinDetail> | undefined;
   constructor(private route: ActivatedRoute, private coinService: CoinService) {
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       let coinId = params['id'];
-      this.coinDetail$ = this.coinService.getCoinsById(coinId)
+      this.coinDetail$ = this.coinService.getCoinsById(coinId);
     });
   }
 }
