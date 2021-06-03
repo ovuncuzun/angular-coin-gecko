@@ -10,7 +10,7 @@
             <td mat-cell *matCellDef="let coin">
                 <div class="d-flex">
                     <img src={{coin.image}} class="coin-thumbnail" />
-                    <a class="coin-name">
+                    <a class="coin-name" [routerLink]="['/coins', coin.id]">
                         <span> {{coin.name}} </span>
                         <span class="coin-symbol">
                             {{coin.symbol}}
@@ -21,7 +21,7 @@
         </ng-container>
 
         <ng-container matColumnDef="current_price">
-            <th mat-header-cell *matHeaderCellDef>Price</th>
+            <th mat-header-cell *matHeaderCellDef>Current Price</th>
             <td mat-cell *matCellDef="let coin"> {{ coin.current_price | currency:'EUR':true }}
             </td>
         </ng-container>

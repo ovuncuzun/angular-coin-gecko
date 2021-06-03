@@ -1,1 +1,41 @@
-<p>coin-detail works!</p>
+<div *ngIf="coinDetail$ | async as detail">
+    <mat-card class="tp-card">
+        <h2>Coin Details</h2>
+        <mat-card-content>
+            <p>
+                <b>Name: </b> {{ detail.name }}
+            </p>
+        </mat-card-content>
+        <mat-card-content>
+            <p>
+                <b>Symbol: </b> {{ detail.symbol }}
+            </p>
+        </mat-card-content>
+        <mat-card-content>
+            <p>
+                <b>Hashing algorithm: </b> {{ detail.hashing_algorithm }}
+            </p>
+        </mat-card-content>
+        <mat-card-content>
+            <p>
+                <b>Description: </b>
+                <span [innerHTML]="detail.description.en"></span>
+            </p>
+        </mat-card-content>
+        <mat-card-content>
+            <p>
+                <b>Market Cap: </b> {{ detail.market_data.market_cap.eur | currency:'EUR':true}}
+            </p>
+        </mat-card-content>
+        <mat-card-content>
+            <p>
+                <b>Homepage: </b> <a [attr.href]="detail.links.homepage[0]"> {{ detail.links.homepage[0] }}</a>
+            </p>
+        </mat-card-content>
+        <mat-card-content>
+            <p>
+                <b>Genesis Date: </b> {{ detail.genesis_date | date: 'dd.MM.yyyy' }}
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>
