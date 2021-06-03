@@ -1,0 +1,23 @@
+table {
+    width: 100%;
+    margin: 0;
+}
+
+.coin-thumbnail {
+    height: 1.5em;
+    widows: 1.5em;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
+    vertical-align: bottom;
+}
+
+.coin-symbol {
+    font-size: smaller;
+    margin-left: 0.5em;
+
+}
+
+.coin-name {
+    text-decoration: none;
+    color: black;
+}

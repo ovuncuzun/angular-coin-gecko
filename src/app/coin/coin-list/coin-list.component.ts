@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { CoinService } from 'src/app/services/coin.service';
 
 @Component({
   selector: 'app-coin-list',
@@ -6,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./coin-list.component.scss']
 })
 export class CoinListComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  coins!: MatTableDataSource<any>;
+  columnsToDisplay: String[] = ['rank', 'name', 'current_price', 'high_24h', 'low_24h'];
 
-  constructor() { }
+  constructor(private coinService: CoinService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.coinService.getCoins().subscribe((data: any) => {
+      this.coins = new MatTableDataSource(data);
+      this.coins.paginator = this.paginator;
+    });
   }
-
 }

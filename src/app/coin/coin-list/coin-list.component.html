@@ -1,1 +1,46 @@
-<p>coin-list works!</p>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="coins">
+        <ng-container matColumnDef="rank">
+            <th mat-header-cell *matHeaderCellDef>#</th>
+            <td mat-cell *matCellDef="let coin; let i = index;" width="3%"> {{ coin.market_cap_rank }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let coin">
+                <div class="d-flex">
+                    <img src={{coin.image}} class="coin-thumbnail" />
+                    <a class="coin-name">
+                        <span> {{coin.name}} </span>
+                        <span class="coin-symbol">
+                            {{coin.symbol}}
+                        </span>
+                    </a>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="current_price">
+            <th mat-header-cell *matHeaderCellDef>Price</th>
+            <td mat-cell *matCellDef="let coin"> {{ coin.current_price | currency:'EUR':true }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="high_24h">
+            <th mat-header-cell *matHeaderCellDef>24h High Price</th>
+            <td mat-cell *matCellDef="let coin"> {{ coin.high_24h | currency:'EUR':true }}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="low_24h">
+            <th mat-header-cell *matHeaderCellDef>24h Low Price</th>
+            <td mat-cell *matCellDef="let coin"> {{ coin.low_24h | currency:'EUR':true }}
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+</div>
