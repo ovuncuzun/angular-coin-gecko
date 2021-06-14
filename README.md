@@ -1,3 +1,7 @@
+<img width="1896" alt="s1" src="https://user-images.githubusercontent.com/10393460/121885975-b8e13280-cd0c-11eb-818e-6562663d8142.png">
+
+<img width="1897" alt="s2" src="https://user-images.githubusercontent.com/10393460/121885989-bbdc2300-cd0c-11eb-8df8-5e30e9b6ed00.png">
+
 # AngularCoinGecko
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.1.
