@@ -15,8 +15,8 @@ export interface ICoinDetail {
     name: string;
     symbol: string;
     hashing_algorithm: string;
-    description: { [en: string]: string };
-    market_data: { [market_cap: string]: { [eur: string]: number } };
+    description: { en: string };
+    market_data: { market_cap: { eur: number } };
     links: { [homepage: string]: string };
     genesis_date: string;
 }
